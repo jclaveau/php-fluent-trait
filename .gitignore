@@ -1,0 +1,7 @@
+/vendor
+/.idea
+/.directory
+/tests_coverage
+/clover.xml
+/docs/phpdoc-*
+composer.lock
