@@ -4,12 +4,12 @@
  *
  * @author  Jean Claveau
  */
-namespace JClaveau\Traits;
+namespace JClaveau\Traits\Fluent;
 
 /**
  * This trait gathers common methods of fluent objects
  */
-trait Fluent
+trait New_
 {
     /**
      * Calls the constructor
@@ -19,16 +19,6 @@ trait Fluent
     public static function new_()
     {
         return new static(...func_get_args());
-    }
-
-    /**
-     * Clone the current instance
-     *
-     * @return * The cloned instance
-     */
-    public function clone_()
-    {
-        return clone $this;
     }
 
     /**/

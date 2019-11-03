@@ -15,7 +15,8 @@ php-fluent-trait is installable via [Composer](http://getcomposer.org)
 ```php
 class FluentObject
 {
-    use Fluent;
+    use JClaveau\Traits\Fluent\New_;
+    use JClaveau\Traits\Fluent\Clone_;
 }
 
 // PHP 5.6

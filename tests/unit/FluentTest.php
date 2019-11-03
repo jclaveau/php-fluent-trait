@@ -1,11 +1,12 @@
 <?php
-namespace JClaveau\Traits;
+namespace JClaveau\Traits\Fluent;
 
 /**
  */
 class TestObject
 {
-    use Fluent;
+    use New_;
+    use Clone_;
 }
 
 /**
