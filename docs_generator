@@ -13,4 +13,4 @@ fi
     --directory=src/ \
     --target=docs \
     --template="tools/phpdoc-markdown-public/data/templates/markdown-public" \
-    --title="PHP Fluent Trait"
+    --title="PHP Fluent Traits"

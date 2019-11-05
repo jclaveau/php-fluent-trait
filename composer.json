@@ -1,9 +1,9 @@
 {
-    "name": "jclaveau/php-fluent-trait",
-    "description": "A trait to gather fluent syntax common methods",
+    "name": "jclaveau/php-fluent-traits",
+    "description": "Traits gathering fluent syntax common methods",
     "license": "MIT",
     "type": "library",
-    "keywords": ["trait", "fluent", "instance", "clone", "chained"],
+    "keywords": ["traits", "fluent", "instance", "clone", "chained"],
     "authors": [
         {
             "name": "Jean Claveau",
