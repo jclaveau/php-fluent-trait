@@ -1,22 +1,22 @@
 <?php
 /**
- * Fluent
+ * New_
  *
- * @author  Jean Claveau
+ * @author Jean Claveau
  */
 namespace JClaveau\Traits\Fluent;
 
-/**
- * This trait gathers common methods of fluent objects
- */
 trait New_
 {
     /**
-     * Calls the constructor
+     * A pure static call to the constructor. 
+     * This method is final as it's meant to provide only the contructor.
+     * If you want a factory method that does more than a pure "new()"
+     * i would suggest to name it differently (e.g. create()). 
      *
-     * @return * The answer
+     * @return * The instance
      */
-    public static function new_()
+    final public static function new_()
     {
         return new static(...func_get_args());
     }
