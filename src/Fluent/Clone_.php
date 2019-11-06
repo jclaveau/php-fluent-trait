@@ -16,7 +16,7 @@ trait Clone_
      *
      * @return * The cloned instance
      */
-    public function clone_()
+    final public function clone_()
     {
         return clone $this;
     }
