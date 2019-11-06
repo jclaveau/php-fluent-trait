@@ -64,26 +64,6 @@ class FluentTest extends \AbstractTest
         $this->assertFalse( $instance2 === $instance );
     }
 
-    public function test_defineAs_missing_parameter()
-    {
-        $instance = TestObject::new_();
-        
-        $this->assertTrue(true);
-        
-        try {
-            $instance->defineAs();
-            $this->assertFalse(true, "An exception has not been thrown");
-        }
-        catch (\Exception $e) {
-            $match = (bool) preg_match(
-                '/^'.preg_quote("Missing argument 1 for JClaveau\Traits\Fluent\TestObject::defineAs()", '/').'/',
-                $e->getMessage()
-            );
-            
-            $this->assertTrue($match);
-        }
-    }
-    
     /**
      */
     public function test_defineAs()
