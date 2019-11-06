@@ -19,18 +19,13 @@ class FluentObject
     use JClaveau\Traits\Fluent\Clone_;
     use JClaveau\Traits\Fluent\DefineAs;
     use JClaveau\Traits\Fluent\DefineCloneAs;
+    use JClaveau\Traits\Fluent\Dump;
     
     protected $name;
     
     public function setName($name)
     {
         $this->name = $name;
-        return $this;
-    }
-    
-    public function dump()
-    {
-        var_dump($this);
         return $this;
     }
 }
