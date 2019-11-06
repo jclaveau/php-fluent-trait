@@ -7,11 +7,44 @@ class TestObject
 {
     use New_;
     use Clone_;
+    use DefineAs;
+    use DefineCloneAs;
+
+    protected $name;
+    
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
+    }
+    
+    public function getName()
+    {
+        return $this->name;
+    }
+    
+    public function appendName($suffix)
+    {
+        $this->name .= $suffix;
+        return $this;
+    }
+    
+    public function dump()
+    {
+        var_dump($this);
+        return $this;
+    }
+    
+    public function copy($suffix = ' copied')
+    {
+        $clone = $this->clone_()->appendName($suffix);
+        return $clone;
+    }
 }
 
 /**
  */
-class ImmutableTest extends \AbstractTest
+class FluentTest extends \AbstractTest
 {
     /**
      */
@@ -29,6 +62,47 @@ class ImmutableTest extends \AbstractTest
         $instance2 = $instance->clone_();
         $this->assertTrue( $instance2 instanceof TestObject );
         $this->assertFalse( $instance2 === $instance );
+    }
+
+    public function test_defineAs_missing_parameter()
+    {
+        $instance = TestObject::new_();
+        
+        $this->assertTrue(true);
+        
+        try {
+            $instance->defineAs();
+            $this->assertFalse(true, "An exception has not been thrown");
+        }
+        catch (\Exception $e) {
+            $match = (bool) preg_match(
+                '/^'.preg_quote("Missing argument 1 for JClaveau\Traits\Fluent\TestObject::defineAs()", '/').'/',
+                $e->getMessage()
+            );
+            
+            $this->assertTrue($match);
+        }
+    }
+    
+    /**
+     */
+    public function test_defineAs()
+    {
+        $instance = TestObject::new_();
+        $instance->defineAs($instance_alias);
+        $this->assertSame($instance, $instance_alias);
+    }
+
+    /**
+     */
+    public function test_defineCloneAs()
+    {
+        $instance = TestObject::new_()->setName('instance1');
+        $this->assertEquals($instance->getName(), 'instance1');
+        $instance->defineCloneAs($instance1_saved)->setName('instance1_renamed');
+        
+        $this->assertTrue($instance1_saved->getName() === 'instance1');
+        $this->assertTrue($instance->getName() === 'instance1_renamed');
     }
 
     /**/

@@ -17,7 +17,36 @@ class FluentObject
 {
     use JClaveau\Traits\Fluent\New_;
     use JClaveau\Traits\Fluent\Clone_;
+    use JClaveau\Traits\Fluent\DefineAs;
+    use JClaveau\Traits\Fluent\DefineCloneAs;
+    
+    protected $name;
+    
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
+    }
+    
+    public function dump()
+    {
+        var_dump($this);
+        return $this;
+    }
 }
 
-$instance = FluentObject::new_()->clone_();
+$instance = FluentObject::new_()
+    ->setName('Foo')
+    ->dump()                // FluentObject #1 Foo
+    ->defineAs($fooObject1)
+    ->clone_()
+    ->dump()                // FluentObject #2 Foo
+    ->defineCloneAs($barObject2)
+    ->setName('Bar')
+    ->dump()                // FluentObject #2 Bar
+    ;
+    
+$fooObject1->dump(); // FluentObject #1 Foo
+$barObject2->dump(); // FluentObject #3 Foo
+$instance->dump();   // FluentObject #2 Bar
 ```
